@@ -1,7 +1,7 @@
 const BASE_URL = 'https://test-ftxe.onrender.com'; // Backend Render
 
 document.addEventListener("DOMContentLoaded", async function () {
-    const userList = document.getElementById("user-list");
+    const userList = document.getElementById("clientsTableBody");
 
     async function fetchUsers() {
         try {
