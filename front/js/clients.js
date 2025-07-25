@@ -2,6 +2,7 @@ const BASE_URL = 'https://test-ftxe.onrender.com'; // Backend Render
 
 document.addEventListener("DOMContentLoaded", async function () {
     const userList = document.getElementById("clientsTableBody");
+    console.log("userList:", userList);
 
     async function fetchUsers() {
         try {
@@ -19,18 +20,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             users.forEach(user => {
                 const row = document.createElement("tr");
-
                 row.innerHTML = `
-                    <td>${user._id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.email}</td>
-                    <td>${user.role}</td>
-                    <td>
-                        <button class="edit-btn" data-id="${user._id}">Modifier</button>
-                        <button class="delete-btn" data-id="${user._id}">Supprimer</button>
-                    </td>
+                    <td>${user.id || user._id || ''}</td>
+                    <td>${user.created_at ? new Date(user.created_at).toLocaleDateString('fr-FR') : ''}</td>
+                    <td>${user.email || ''}</td>
+                    <td>${user.username || ''}</td>
                 `;
-
                 userList.appendChild(row);
             });
 
