@@ -1,4 +1,4 @@
-// JS dynamique pour SupportOverview.html
+const BASE_URL = 'https://test-ftxe.onrender.com';
 
 // Utilitaire pour formater la date (affichage en format français)
 function formatDate(dateStr) {
@@ -126,7 +126,7 @@ function renderTickets(tickets) {
             if (!confirm('Voulez-vous vraiment supprimer ce ticket ?')) return;
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch(`http://localhost:5001/api/tickets/${ticketId}`, {
+                const response = await fetch(`${BASE_URL}/api/tickets/${ticketId}`, {
                     method: 'DELETE',
                     headers: { 'Authorization': 'Bearer ' + token }
                 });
@@ -160,7 +160,7 @@ let allTickets = [];
 async function fetchAndDisplayTickets() {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5001/api/tickets', {
+        const response = await fetch(`${BASE_URL}/api/tickets`, {
             headers: { 'Authorization': 'Bearer ' + token }
         });
         if (!response.ok) throw new Error('Erreur lors de la récupération des tickets');
@@ -242,7 +242,7 @@ if (applyBulkButton) {
             if (!confirm('Voulez-vous vraiment supprimer les tickets sélectionnés ?')) return;
             for (const id of selectedIds) {
                 try {
-                    await fetch(`http://localhost:5001/api/tickets/${id}`, {
+                    await fetch(`${BASE_URL}/api/tickets/${id}`, {
                         method: 'DELETE',
                         headers: { 'Authorization': 'Bearer ' + token }
                     });
@@ -256,7 +256,7 @@ if (applyBulkButton) {
         } else if (bulkAction === 'Mark as Resolved') {
             for (const id of selectedIds) {
                 try {
-                    await fetch(`http://localhost:5001/api/tickets/${id}`, {
+                    await fetch(`${BASE_URL}/api/tickets/${id}`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': 'Bearer ' + token,
@@ -272,7 +272,7 @@ if (applyBulkButton) {
         } else if (bulkAction === 'Mark as In progress') {
             for (const id of selectedIds) {
                 try {
-                    await fetch(`http://localhost:5001/api/tickets/${id}`, {
+                    await fetch(`${BASE_URL}/api/tickets/${id}`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': 'Bearer ' + token,
