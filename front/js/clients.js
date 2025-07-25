@@ -5,8 +5,17 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function fetchUsers() {
         try {
-            const response = await fetch(`${BASE_URL}/api/users`);
+            const token = localStorage.getItem('token');
+            const response = await fetch(`${BASE_URL}/api/users`, {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
             const users = await response.json();
+            console.log(users); // Pour debug
+
+            if (!Array.isArray(users)) {
+                console.error("Réponse inattendue :", users);
+                return;
+            }
 
             users.forEach(user => {
                 const row = document.createElement("tr");

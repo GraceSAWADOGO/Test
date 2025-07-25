@@ -10,9 +10,7 @@ dotenv.config();
 app.use(express.json());
 
 const cors = require('cors');
-app.use(cors({
-  origin: 'https://gracesawadogo.github.io'
-}));
+app.use(cors({ origin: '*' }));
 
 //activer les logs des requetes
 

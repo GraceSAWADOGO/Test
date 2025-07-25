@@ -50,8 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 role: accountType
             };
 
+            const BASE_URL = 'https://test-ftxe.onrender.com';
+
             try {
-                const response = await fetch('http://localhost:5001/api/auth/signup', {
+                const response = await fetch(`${BASE_URL}/api/auth/signup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
