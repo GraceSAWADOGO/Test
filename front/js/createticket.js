@@ -1,4 +1,5 @@
-// Script pour gérer le compteur de caractères
+const BASE_URL = 'https://test-ftxe.onrender.com'; // URL de ton backend Render
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('ticketForm');
     const descriptionTextarea = document.getElementById('description');
@@ -6,13 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const cancelBtn = document.querySelector('.cancel-btn');
     const submitBtn = document.querySelector('.submit-btn');
 
-    // Compteur de caractères pour la description
     function updateCharCount() {
         const currentLength = descriptionTextarea.value.length;
         const maxLength = 500;
         charCount.textContent = `${currentLength}/${maxLength}`;
-        
-        // Changer la couleur si on approche de la limite
         if (currentLength > maxLength * 0.9) {
             charCount.style.color = '#ef4444';
         } else if (currentLength > maxLength * 0.7) {
@@ -22,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Limiter la saisie à 500 caractères
     function limitTextarea() {
         if (descriptionTextarea.value.length > 500) {
             descriptionTextarea.value = descriptionTextarea.value.substring(0, 500);
@@ -30,11 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCharCount();
     }
 
-    // Événements pour le textarea
     descriptionTextarea.addEventListener('input', limitTextarea);
     descriptionTextarea.addEventListener('keyup', updateCharCount);
 
-    // Validation en temps réel
     function validateForm() {
         const requiredFields = form.querySelectorAll('[required]');
         let isValid = true;
@@ -48,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Validation spécifique pour l'email
         const emailField = document.getElementById('email');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (emailField.value && !emailRegex.test(emailField.value)) {
@@ -59,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
-    // Validation en temps réel pour les champs requis
     form.querySelectorAll('[required]').forEach(field => {
         field.addEventListener('blur', function() {
             if (!this.value.trim()) {
@@ -76,11 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Gestion de la soumission du formulaire
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Suppression de la validation email/phone (plus dans le formulaire)
         const requiredFields = form.querySelectorAll('[required]');
         let isValid = true;
         requiredFields.forEach(field => {
@@ -96,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Désactiver le bouton pendant la soumission
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
@@ -109,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: formData.get('description')
             };
 
-            // Récupérer le token d'authentification
             const token = localStorage.getItem('token');
             if (!token) {
                 showNotification('Please log in to create a ticket.', 'error');
@@ -117,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const response = await fetch('http://localhost:5001/api/tickets', {
+            const response = await fetch(`${BASE_URL}/api/tickets`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -129,12 +118,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
                 const result = await response.json();
                 showNotification('Ticket created successfully!', 'success');
-                
-                // Réinitialiser le formulaire
                 form.reset();
                 updateCharCount();
-                
-                // Rediriger vers la page des tickets après un délai
                 setTimeout(() => {
                     window.location.href = 'usertickets.html';
                 }, 2000);
@@ -146,13 +131,11 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error creating ticket:', error);
             showNotification('An error occurred while creating the ticket.', 'error');
         } finally {
-            // Réactiver le bouton
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Ticket';
         }
     });
 
-    // Gestion du bouton Annuler
     cancelBtn.addEventListener('click', function() {
         if (form.querySelector('input, textarea, select').value) {
             if (confirm('Are you sure you want to cancel? All entered data will be lost.')) {
@@ -163,9 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Fonction pour afficher les notifications
     function showNotification(message, type = 'info') {
-        // Supprimer les notifications existantes
         const existingNotifications = document.querySelectorAll('.notification');
         existingNotifications.forEach(notification => notification.remove());
 
@@ -179,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
-        // Styles pour la notification
         notification.style.cssText = `
             position: fixed;
             top: 20px;
@@ -209,14 +189,12 @@ document.addEventListener('DOMContentLoaded', function() {
             margin-left: auto;
         `;
 
-        // Gestion de la fermeture
         notification.querySelector('.notification-close').addEventListener('click', () => {
             notification.remove();
         });
 
         document.body.appendChild(notification);
 
-        // Auto-suppression après 5 secondes
         setTimeout(() => {
             if (notification.parentNode) {
                 notification.style.animation = 'slideOut 0.3s ease-in';
@@ -243,7 +221,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Styles CSS pour les animations
     const style = document.createElement('style');
     style.textContent = `
         @keyframes slideIn {
@@ -270,10 +247,8 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 
-    // Initialiser le compteur de caractères
     updateCharCount();
 
-    // Pré-remplir l'email si disponible
     const userEmail = localStorage.getItem('userEmail');
     if (userEmail) {
         document.getElementById('email').value = userEmail;

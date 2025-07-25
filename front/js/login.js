@@ -1,3 +1,5 @@
+const BASE_URL = 'https://test-ftxe.onrender.com';
+
 document.addEventListener('DOMContentLoaded', function() {
     // Gestion de l'affichage/masquage du mot de passe
     const togglePassword = document.querySelector('.toggle-password');
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             try {
-                const response = await fetch('http://localhost:5001/api/auth/login', {
+                const response = await fetch(`${BASE_URL}/api/auth/login`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

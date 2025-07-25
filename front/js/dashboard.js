@@ -1,3 +1,5 @@
+const BASE_URL = 'https://test-ftxe.onrender.com';
+
 document.addEventListener('DOMContentLoaded', function() {
     // Line Chart
     const lineChart = echarts.init(document.getElementById('lineChart'));
@@ -133,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function fetchTickets() {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:5001/api/tickets', {
+    const response = await fetch(`${BASE_URL}/api/tickets`, {
         headers: { 'Authorization': 'Bearer ' + token }
     });
     if (!response.ok) throw new Error('Erreur lors de la récupération des tickets');
@@ -255,7 +257,7 @@ fetchTickets().then(tickets => {
 
 async function fetchClients() {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:5001/api/users', {
+    const response = await fetch(`${BASE_URL}/api/users`, {
         headers: { 'Authorization': 'Bearer ' + token }
     });
     if (!response.ok) throw new Error('Erreur lors de la récupération des clients');
@@ -282,6 +284,7 @@ navItems.forEach(item => {
         e.preventDefault();
     });
 });
+
 // Mettre 'Dashboard' actif par défaut si on est sur dashboard.html
 window.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;

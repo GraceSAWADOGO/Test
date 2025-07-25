@@ -26,15 +26,22 @@ document.addEventListener('DOMContentLoaded', function() {
         signupForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             // Récupération des valeurs du formulaire
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
-            const accountType = document.querySelector('input[name="account-type"]:checked').value;
+            const accountTypeInput = document.querySelector('input[name="account-type"]:checked');
+            if (!accountTypeInput) {
+                alert('Veuillez sélectionner un type de compte.');
+                return;
+            }
+            const accountType = accountTypeInput.value;
+
             // Validation simple côté client
             if (!username || !email || !password) {
                 alert('Veuillez remplir tous les champs obligatoires.');
                 return;
             }
+
             // Préparation des données pour l'envoi à l'API
             const userData = {
                 username: username,
@@ -42,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 password: password,
                 role: accountType
             };
+
             try {
                 const response = await fetch('http://localhost:5001/api/auth/signup', {
                     method: 'POST',
@@ -50,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     body: JSON.stringify(userData)
                 });
+
                 if (response.ok) {
                     const data = await response.json();
                     // Stocker le token JWT
@@ -58,8 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         localStorage.setItem('userEmail', email);
                     }
                     console.log('Réponse backend:', data);
-                    //alert('Rôle reçu: ' + (data.user ? data.user.role : 'aucun'));
-                    // alert('Compte créé avec succès!'); // Supprimé pour permettre la redirection
+
+                    // Redirection selon le rôle retourné
                     if (data.user && data.user.role === 'Admin') {
                         window.location.href = 'admin/dashboard.html';
                     } else {
@@ -74,12 +83,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Fonction de redirection basée sur le type de compte sélectionné
+
+    // (Optionnel) Fonction de redirection selon type de compte sélectionné (non appelée dans ce code)
     function redirectToPage() {
-        const accountType = document.querySelector('input[name="account-type"]:checked').value;
+        const accountTypeInput = document.querySelector('input[name="account-type"]:checked');
+        if (!accountTypeInput) return;
+        const accountType = accountTypeInput.value;
         console.log("Redirection en cours...", accountType);
-        
+
         if (accountType === "User") {
             window.location.href = '../connect.html'; // Pour User
         } else if (accountType === "Admin") {

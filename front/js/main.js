@@ -48,25 +48,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Déconnexion automatique sur le bouton logout
     const logoutBtn = document.querySelector('a.btn.btn-primary[href="../index.html"]');
     if (logoutBtn) {
-        logoutBtn.addEventListener('click', function(e) {
+        logoutBtn.addEventListener('click', function() {
             // Supprimer le token et infos utilisateur
             localStorage.removeItem('token');
             localStorage.removeItem('userEmail');
-            // Redirection (optionnelle, car le href le fait déjà)
-            // window.location.href = 'index.html';
+            // Pas besoin de redirection manuelle car href le gère déjà
         });
     }
 
     // Protection des boutons d'accès aux tickets si non connecté
     const token = localStorage.getItem('token');
     // Sur la page d'accueil (index.html)
-    if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '/index.html') {
+    if (
+        window.location.pathname.endsWith('index.html') ||
+        window.location.pathname === '/' ||
+        window.location.pathname === '/index.html'
+    ) {
         // Boutons dans le header
         const ticketsNav = document.querySelector('a[href="user/usertickets.html"]');
         const createNav = document.querySelector('a[href="user/createticket.html"]');
         // Boutons dans la section hero
         const heroCreate = document.querySelector('a.btn.btn-primary[href="user/createticket.html"]');
         const heroTickets = document.querySelector('a.btn.btn-secondary[href="user/usertickets.html"]');
+        
         if (!token) {
             if (ticketsNav) ticketsNav.style.display = 'none';
             if (createNav) createNav.style.display = 'none';
@@ -75,13 +79,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Gestion du menu mobile (à implémenter si nécessaire)
-    // const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    // const navMenu = document.querySelector('nav ul');
-    // 
-    // if (mobileMenuButton && navMenu) {
-    //     mobileMenuButton.addEventListener('click', function() {
-    //         navMenu.classList.toggle('active');
-    //     });
-    // }
+    // Gestion du menu mobile (à activer si nécessaire)
+    /*
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const navMenu = document.querySelector('nav ul');
+
+    if (mobileMenuButton && navMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+    }
+    */
 });
