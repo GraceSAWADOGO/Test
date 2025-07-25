@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte - Système de Tickets de Support</title>
+    <link rel="stylesheet" href="css/signupstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-card">
+            <div class="logo">
+                <a href="index.html">Ticket System</a>
+            </div>
+            <div class="system-name">Système de Tickets de Support</div>
+            
+            <h1>Créer un compte</h1>
+            <p class="subtitle">Rejoignez notre plateforme de support</p>
+            
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" name="username" placeholder="Votre nom d'utilisateur" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Adresse email</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <div class="input-with-icon password-input">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <button type="button" class="toggle-password" aria-label="Afficher/Masquer le mot de passe">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Type de compte</label>
+                    <div class="account-types">
+                        <div class="account-type">
+                            <input type="radio" id="user-type" name="account-type" value="User" checked>
+                            <label for="user-type" class="account-type-label">
+                                <div class="account-type-icon user-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="account-type-info">
+                                    <div class="account-type-title">Utilisateur</div>
+                                    <div class="account-type-desc">Créer et suivre des tickets</div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="account-type">
+                            <input type="radio" id="admin-type" name="account-type" value="Admin" >
+                            <label for="admin-type" class="account-type-label">
+                                <div class="account-type-icon admin-icon">
+                                    <i class="fas fa-user-cog"></i>
+                                </div>
+                                <div class="account-type-info">
+                                    <div class="account-type-title">Administrateur</div>
+                                    <div class="account-type-desc">Gérer tous les tickets et utilisateurs</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="redirectToPage()" type="submit" class="btn-primary">Créer mon compte</button>
+            </form>
+            
+            <div class="login-link">
+                Déjà inscrit ? <a href="login.html">Se connecter</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/signup.js"></script>
+</body>
+</html>

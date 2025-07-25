@@ -1,0 +1,246 @@
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f5ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 550px;
+    padding: 20px;
+}
+
+/* Carte d'inscription */
+.signup-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+    padding: 40px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #4f46e5;
+}
+
+.system-name {
+    color: #6b7280;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #4f46e5;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* Formulaire */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #4b5563;
+    font-size: 14px;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    color: #9ca3af;
+    font-size: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.password-input {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+
+.toggle-password:hover {
+    color: #4f46e5;
+}
+
+/* Types de compte */
+.account-types {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.account-type {
+    position: relative;
+}
+
+.account-type input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.account-type-label {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.account-type input[type="radio"]:checked + .account-type-label {
+    border-color: #4f46e5;
+    background-color: #f5f3ff;
+}
+
+.account-type-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.user-icon {
+    background-color: #e0e7ff;
+    color: #4f46e5;
+}
+
+.admin-icon {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.account-type-info {
+    flex: 1;
+}
+
+.account-type-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.account-type-desc {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Bouton */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+}
+
+.btn-primary:hover {
+    background-color: #4338ca;
+}
+
+/* Lien de connexion */
+.login-link {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.login-link a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .signup-card {
+        padding: 30px 20px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Support Ticket</title>
+    <link rel="stylesheet" href="../css/createticket.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="../connect.html">Ticket System</a></div>
+            <nav>
+                <a href="../connect.html">Home</a>
+                <a href="usertickets.html">My Tickets</a>
+                <button class="create-ticket-btn">Create Ticket</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="main-content">
+                <div class="form-section">
+                    <h1>Create Support Ticket</h1>
+                    <p class="subtitle">Describe your issue and we'll help you resolve it quickly.</p>
+                    
+                    <form id="ticketForm">
+                        <div class="form-group">
+                            <label for="ticketTitle">Ticket Title *</label>
+                            <input type="text" id="ticketTitle" name="ticketTitle" placeholder="Brief description of your issue" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category *</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select a category</option>
+                                <option value="Account issues">Account issues</option>
+                                <option value="Bug reports">Bug reports</option>
+                                <option value="General support">General support</option>
+                                <option value="Technical issues">Technical issues</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority">Priority Level *</label>
+                            <select id="priority" name="priority" required>
+                                <option value="">Select priority</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Detailed Description *</label>
+                            <textarea id="description" name="description" rows="6" placeholder="Please provide a detailed description of your issue, including any error messages, steps to reproduce, and what you expected to happen..." required></textarea>
+                            <div class="description-footer">
+                                <span class="help-text">Be as specific as possible to help us resolve your issue faster</span>
+                                <span class="char-count">0/500</span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Ticket
+                            </button>
+                            <button type="button" class="cancel-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="info-card">
+                    <h3>Tips for Better Support</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Include error messages, browser info, and steps to reproduce.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-image"></i>
+                            <span>Visual examples help us understand your issue faster.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>We typically respond within 2-24 hours.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Other Ways to Get Help</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-book"></i>
+                            <span>Find answers to common questions.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-comments"></i>
+                            <span>Chat with our support team.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>Call us at (555) 123-4567.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/createticket.js"></script>
+</body>
+</html>

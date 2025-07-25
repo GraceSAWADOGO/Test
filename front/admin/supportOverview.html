@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Overview</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/supportOverview.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <a href="dashboard.html">Ticket System</a>
+            </div>
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="ri-dashboard-line"></i>
+                    Dashboard
+                </a>
+                <a href="clients.html" class="nav-item">
+                    <i class="ri-customer-service-line"></i>
+                    Clients
+                </a>
+                <a href="supportOverview.html" class="nav-item active">
+                    <i class="ri-settings-line"></i>
+                    Support overview
+                </a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <div class="header-actions">
+                    <h1 class="page-title">Support Tickets</h1>
+                    <div class="actions">
+                        <button class="btn-primary" id="logoutBtn">
+                            <i class="ri-logout-box-r-line"></i>
+                            Log out
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <main>
+                <div class="tickets-container">
+                    <div class="search-filters">
+                        <div class="search-box">
+                            <i class="ri-search-line"></i>
+                            <input type="text" placeholder="Search tickets by ID, subject, or client name...">
+                        </div>
+                        <div class="filters">
+                            <div class="filter">
+                                <label>Status</label>
+                                <div class="select-wrapper">
+                                    <select id="statusFilter">
+                                        <option>All Status</option>
+                                        <option>Open</option>
+                                        <option>In progress</option>
+                                        <option>Resolved</option>
+                                    </select>
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </div>
+                            </div>
+                            <div class="filter">
+                                <label>Priority</label>
+                                <div class="select-wrapper">
+                                    <select id="priorityFilter">
+                                        <option>All Priority</option>
+                                        <option>High</option>
+                                        <option>Medium</option>
+                                        <option>Low</option>
+                                    </select>
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </div>
+                            </div>
+                            <div class="filter">
+                                <label>Date of creation</label>
+                                <div class="date-input">
+                                    <input type="text" id="dateOfCreation" placeholder="mm/dd/yyyy">
+                                    <i class="ri-calendar-line"></i>
+                                </div>
+                            </div>
+                            <button class="btn-clear">Clear Filters</button>
+                        </div>
+                    </div>
+
+                    <div class="bulk-actions-bar">
+                        <div class="select-all">
+                            <input type="checkbox" class="select-all-checkbox">
+                            <span>Select All</span>
+                            <span id="selectedCount">0 selected</span>
+                        </div>
+                        <div class="bulk-actions">
+                            <div class="select-wrapper">
+                                <select id="bulkAction">
+                                    <option>Bulk Actions</option>
+                                    <option>Delete Selected</option>
+                                    <option>Mark as Resolved</option>
+                                    <option>Mark as In progress</option>
+                                </select>
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                            <button class="btn-apply" id="applyBulkAction">Apply</button>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="tickets-table">
+                            <thead>
+                                <tr>
+                                    <th class="checkbox-cell">
+                                        <div class="checkbox header-checkbox">
+                                            <div class="checkmark"></div>
+                                        </div>
+                                    </th>
+                                    <th class="sortable" onclick="sortTable('id')">
+                                        <div class="th-content">
+                                            Ticket ID
+                                            <i class="ri-arrow-up-down-line"></i>
+                                        </div>
+                                    </th>
+                                    <th class="sortable" onclick="sortTable('date')">
+                                        <div class="th-content">
+                                            Date
+                                            <i class="ri-arrow-up-down-line"></i>
+                                        </div>
+                                    </th>
+                                    <th>Subject</th>
+                                    <th class="sortable" onclick="sortTable('priority')">
+                                        <div class="th-content">
+                                            Priority
+                                            <i class="ri-arrow-up-down-line"></i>
+                                        </div>
+                                    </th>
+                                    <th>Client Username</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ticketsTableBody">
+                                <!-- Row 1 -->
+                                <tr>
+                                    <td class="checkbox-cell">
+                                        <div class="checkbox row-checkbox-visual">
+                                            <div class="checkmark"></div>
+                                        </div>
+                                    </td>
+                                    <td>#TK-2025-001</td>
+                                    <td>Jan 15, 2025</td>
+                                    <td>Unable to access premium features after subscription renewal</td>
+                                    <td>
+                                        <span class="badge high">High</span>
+                                    </td>
+                                    <td>
+                                        Sarah Johnson
+                                    </td>
+                                    <td>
+                                        <span class="badge open">Open</span>
+                                    </td>
+                                    <td class="actions-cell">
+                                        <button class="action-btn view">
+                                            <i class="ri-eye-line"></i>
+                                        </button>
+                                        <button class="action-btn edit">
+                                            <i class="ri-edit-line"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 2 -->
+                                <tr>
+                                    <td class="checkbox-cell">
+                                        <div class="checkbox row-checkbox-visual">
+                                            <div class="checkmark"></div>
+                                        </div>
+                                    </td>
+                                    <td>#TK-2025-002</td>
+                                    <td>Jan 14, 2025</td>
+                                    <td>Payment processing error during checkout</td>
+                                    <td>
+                                        <span class="badge low">Low</span>
+                                    </td>
+                                    <td>
+                                        Mike Chen
+                                    </td>
+                                    <td>
+                                        <span class="badge open">Open</span>
+                                    </td>
+                                    <td class="actions-cell">
+                                        <button class="action-btn view">
+                                            <i class="ri-eye-line"></i>
+                                        </button>
+                                        <button class="action-btn edit">
+                                            <i class="ri-edit-line"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 3 -->
+                                <tr>
+                                    <td class="checkbox-cell">
+                                        <div class="checkbox row-checkbox-visual">
+                                            <div class="checkmark"></div>
+                                        </div>
+                                    </td>
+                                    <td>#TK-2025-003</td>
+                                    <td>Jan 14, 2025</td>
+                                    <td>Data export functionality not working properly</td>
+                                    <td>
+                                        <span class="badge medium">Medium</span>
+                                    </td>
+                                    <td>
+                                        Emily Davis
+                                    </td>
+                                    <td>
+                                        <span class="badge completed">Completed</span>
+                                    </td>
+                                    <td class="actions-cell">
+                                        <button class="action-btn view">
+                                            <i class="ri-eye-line"></i>
+                                        </button>
+                                        <button class="action-btn edit">
+                                            <i class="ri-edit-line"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Suppression du bloc pagination -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/supportOverview.js"></script>
+</body>
+</html>

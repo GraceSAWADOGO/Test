@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail du Ticket</title>
+    <link rel="stylesheet" href="../css/usertickets.css">
+    <link rel="stylesheet" href="../css/ticketdetail.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../connect.html">logo</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../connect.html">Home</a></li>
+                    <li><a href="usertickets.html">My Tickets</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container ticket-container">
+            <div class="ticket-detail-card" style="position: relative;">
+                <button id="ticket-options-btn" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer;">&#8942;</button>
+                <div id="ticket-options-menu" style="display: none; position: absolute; top: 50px; right: 20px; background: #fff; border: 1px solid #ddd; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); z-index: 10; min-width: 120px;">
+                    <div class="ticket-option-item" id="option-update" style="padding: 10px 16px; cursor: pointer;">Update</div>
+                    <div class="ticket-option-item" id="option-delete" style="padding: 10px 16px; cursor: pointer; color: #c00;">Delete</div>
+                </div>
+                <div class="ticket-field">
+                    <label class="field-label">Titre</label>
+                    <div class="field-value" id="ticket-title">Chargement...</div>
+                </div>
+                
+                <div class="ticket-field">
+                    <label class="field-label">Description</label>
+                    <div class="field-value" id="ticket-description">Chargement...</div>
+                </div>
+                
+                <div class="ticket-field">
+                    <label class="field-label">Priority</label>
+                    <div class="field-value">
+                        <span id="ticket-priority" class="priority-badge">Chargement...</span>
+                    </div>
+                </div>
+                
+                <div class="ticket-field">
+                    <label class="field-label">Category</label>
+                    <div class="field-value">
+                        <span id="ticket-category" class="category-badge">Chargement...</span>
+                    </div>
+                </div>
+                
+                <div class="ticket-field">
+                    <label class="field-label">Status</label>
+                    <div class="field-value">
+                        <span id="ticket-status">Chargement...</span>
+                    </div>
+                </div>
+                
+                <div class="ticket-dates">
+                    <div class="date-field">
+                        <div class="date-label">Created</div>
+                        <div class="date-value" id="ticket-created">Chargement...</div>
+                    </div>
+                    <div class="date-field">
+                        <div class="date-label">Updated</div>
+                        <div class="date-value" id="ticket-updated">Chargement...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/ticketdetail.js"></script>
+</body>
+</html> 

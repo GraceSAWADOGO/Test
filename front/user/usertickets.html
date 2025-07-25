@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Tickets - Système de Support</title>
+    <link rel="stylesheet" href="../css/usertickets.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../connect.html">Ticket System</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../connect.html">Home</a></li>
+                    <li><a href="usertickets.html" class="active">My Tickets</a></li>
+                    <li><a href="createticket.html" class="btn-create">Create Ticket</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main>
+        <div class="container">
+            <div class="tickets-header">
+                <div class="tickets-title">
+                    <h1>My Support Tickets</h1>
+                    <p>Track and manage your support requests</p>
+                </div>
+                <div class="tickets-actions">
+                    <a href="createticket.html" class="btn-primary">Create New Ticket</a>
+                </div>
+            </div>
+
+            <!-- Filtres -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <h3>Status</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="status" data-value="all">All</button>
+                        <button class="filter-btn" data-filter="status" data-value="open">Open</button>
+                        <button class="filter-btn" data-filter="status" data-value="in-progress">In Progress</button>
+                        <button class="filter-btn" data-filter="status" data-value="resolved">Resolved</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Priority</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="priority" data-value="all">All</button>
+                        <button class="filter-btn" data-filter="priority" data-value="high">High</button>
+                        <button class="filter-btn" data-filter="priority" data-value="medium">Medium</button>
+                        <button class="filter-btn" data-filter="priority" data-value="low">Low</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistiques des tickets -->
+            <div class="ticket-stats">
+                <div class="stat-card">
+                    <div class="stat-icon total-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Total Tickets</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon open-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Open</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon progress-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">In Progress</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon resolved-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Resolved</div>
+                </div>
+            </div>
+
+            <!-- Liste des tickets -->
+            <div class="tickets-list-section">
+                <h2>0 Ticket</h2>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="../js/usertickets.js"></script>
+</body>
+</html>
